@@ -1,3 +1,7 @@
+mod map;
+
+pub use map::Map;
+
 #[must_use = "iterators are lazy and do nothing unless consumed"]
 pub trait Iterator {
     type Item;
