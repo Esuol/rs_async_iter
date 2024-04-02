@@ -1,6 +1,10 @@
+mod lend;
 mod map;
 
+pub use lend::Lend;
 pub use map::Map;
+
+use crate::FromIterator;
 
 #[must_use = "iterators are lazy and do nothing unless consumed"]
 pub trait Iterator {
