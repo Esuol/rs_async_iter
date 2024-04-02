@@ -20,4 +20,13 @@ pub trait Iterator {
     {
         Map::new(self, f)
     }
+
+    #[must_use = "if you really need to exhaust the iterator, consider `.for_each(drop)` instead"]
+    async fn collect<B: FromIterator<Self::Item>>(self) -> B
+    where
+        Self: Sized,
+    {
+        let fut = <B as crate::FromIterator<_>>::from_iter(self);
+        fut.await
+    }
 }
